@@ -2,11 +2,26 @@
 // Выполнить с помощью рекурсии.
 // N = 5 -> "5, 4, 3, 2, 1"
 // N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
-
-string NumberFor (int N)
+ 
+Console.Clear();
+int Prompt(string message)
 {
-    if (N == 1) return $"{N}";
-    return NumberFor (N-1) + $" {N}";
-
+  Console.Write(message);
+  int result = Convert.ToInt32(Console.ReadLine());
+  return result;
 }
-Console.WriteLine(NumberFor(8));
+
+int NaturalNumber(int n, int m)
+{
+  if (n == m) return n;
+  else Console.Write($"{NaturalNumber(n, m + 1)}, ");
+  return m;
+}
+
+int n = Prompt("Input N: ");
+if (n < 1)
+{
+  Console.WriteLine("Ввдите положительное число!");
+  return;
+}
+Console.WriteLine(NaturalNumber(n, 1));
